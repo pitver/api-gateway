@@ -8,7 +8,7 @@ app:
   topic:
      example: message
   mail:
-      to: pitver2014@yandex.ru
+      to: test@test.ru
 
 
 spring:
@@ -29,7 +29,7 @@ spring:
 
     mail:
         host: smtp.yandex.ru
-        password: 07dVJWxy
+        password: password
         port: 465
         properties:
             mail:
@@ -38,4 +38,4 @@ spring:
                     starttls:
                         enable: true
         protocol: smtps
-        username: pitver2014@yandex.ru
+        username: test@test.ru

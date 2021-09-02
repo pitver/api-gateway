@@ -28,7 +28,7 @@ public class EmailService {
         mailMessage.setSubject(subject);
         mailMessage.setText(message);
         //адрес почтового ящика с которого будет отправлено сообщение
-        mailMessage.setFrom("pitver2014@yandex.ru");
+        mailMessage.setFrom("test@test.ru");
 
         javaMailSender.send(mailMessage);
     }
