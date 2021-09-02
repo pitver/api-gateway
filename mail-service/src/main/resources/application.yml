@@ -1,0 +1,41 @@
+mail:
+    smtp:
+        debug: true
+server:
+    port: 8086
+
+app:
+  topic:
+     example: message
+  mail:
+      to: pitver2014@yandex.ru
+
+
+spring:
+    application:
+        name: mail-service
+    kafka:
+        consumer:
+            bootstrap-servers: localhost:9092
+            # десериализация сообщения по паре ключ-значение
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            # помечаем все пакеты как достоверные
+            properties:
+                spring:
+                    json:
+                        trusted:
+                            packages: '*'
+
+    mail:
+        host: smtp.yandex.ru
+        password: 07dVJWxy
+        port: 465
+        properties:
+            mail:
+                smtps:
+                    auth: true
+                    starttls:
+                        enable: true
+        protocol: smtps
+        username: pitver2014@yandex.ru

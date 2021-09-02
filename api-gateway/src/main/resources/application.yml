@@ -1,0 +1,34 @@
+eureka:
+    client:
+        #Указывает, должен ли этот клиент получать информацию реестра eureka с сервера eureka.
+        fetch-registry: true
+        #Указывает, следует ли этому экземпляру регистрировать свою информацию на сервере eureka для обнаружения другими пользователями.
+        #Если вы не хотите, чтобы ваши экземпляры были обнаружены, но при этом хотите обнаружить другие экземпляры.
+        register-with-eureka: false
+ribbon:
+    ReadTimeout: 10000 # Тайм-аут обработки запроса после установления соединения
+    ConnectTimeout: 5000 # Тайм-аут для установления соединения
+    MaxAutoRetries: 1 # Количество повторных попыток для текущего экземпляра
+    MaxAutoRetriesNextServer: 1 # Количество повторных попыток переключения экземпляров
+server:
+    port: 8080
+spring:
+    application:
+        name: api-gateway
+
+# маршруты по адресу http://localhost:8080
+zuul:
+    routes:
+        api:
+            # все запросы начинающиеся с api/** будут перенаправлены на protected-service
+            path: /api/**
+            service-id: protected-service
+        auth:
+            # стартовый адрес, для получения токена
+            path: /auth/**
+            service-id: auth-service
+        mail:
+            # все запросы начинающиеся с mail/** будут перенаправлены на mail-service
+            path: /mail/**
+            service-id: mail-service
+    sensitive-headers: Cookie,Set-Cookie

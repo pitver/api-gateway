@@ -1,0 +1,8 @@
+security:
+    jwt:
+        signing-key: should-be-externally-configured
+server:
+    port: 8081
+spring:
+    application:
+        name: auth-service
